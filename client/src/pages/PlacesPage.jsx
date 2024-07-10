@@ -56,9 +56,9 @@ export default function PlacesPage() {
       axios.post('/upload' , data, {
         headers:{'Content-type': 'multipart/form-data'}
       }).then(response => {
-        const {data:filename}=response;
+        const {data:filenames}=response;
         setAddedPhotos(prev => {
-            return [...prev, filename];
+            return [...prev,...filenames];
         })
 
     })
@@ -83,31 +83,7 @@ export default function PlacesPage() {
                         {preInput('Address','Address to this place')}
                         <input type="text" value={address} onChange={ev => setAddress(ev.target.value)} placeholder="address" />
                         {preInput('Photos','more = better')}         
-                        <div className="flex gap-2">
-                           <input value={photoLink}
-                                  onChange={(ev) => setPhotoLink(ev.target.value)} 
-                                  type="text" placeholder={'Add using link...jpg'}/>
-                           <button onClick={addPhotoByLink} className="bg-gray-200 px-4 rounded-2xl">Add photos</button> 
-                        </div>
-                        <input type="file" className="hidden" />
-                        <div className=" mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6 ">
-                         {addedPhotos.length > 0 && addedPhotos.map(link => (
-                            <div>
-                                {
-                                <img className="rounded-2xl" src={'http://localhost:4000/uploads/' + link} alt="" />
-                                }
-                            </div>
-                         ))}
-
-                        <label className=" cursor-pointer flex items-center gap-1 jutify-center border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
-                        <input type="file" multiple className="hidden" onChange={uploadPhotoLink} />
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-                        </svg>
-                        Upload
-
-                        </label>
-                        </div>
+                       
                         {preInput('Description','description of the place')}
                         
                          <textarea value={description} onChange={ev => setDescription(ev.target.value)} />

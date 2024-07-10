@@ -17,7 +17,7 @@ export default function LoginPage() {
       alert("Login successful");
       setRedirect(true);
     } catch (e) {
-      console.error(e); // Added logging
+      console.error(e); 
       alert("Login failed");
     }
   }
