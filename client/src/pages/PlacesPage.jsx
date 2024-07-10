@@ -44,6 +44,11 @@ export default function PlacesPage() {
    });
    setPhotoLink(' ');
     }
+    function uploadPhoto(ev)
+    {
+      const files=ev.target.files;
+      c
+    }
     return (
         <div>
             {action !== 'new' && (
@@ -80,13 +85,14 @@ export default function PlacesPage() {
                             </div>
                          ))}
 
-                        <button className=" flex items-center gap-1 jutify-center border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
+                        <label className=" cursor-pointer flex items-center gap-1 jutify-center border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
+                        <input type="file" className="hidden" onChange={uploadPhotoLink} />
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
                         </svg>
                         Upload
 
-                        </button>
+                        </label>
                         </div>
                         {preInput('Description','description of the place')}
                         
